@@ -53,6 +53,7 @@
 ### MVPリリース時
 - 会員登録機能
 - ログイン機能
+
 - 投稿機能
 - 投稿一覧機能
 - 投稿詳細機能
@@ -74,3 +75,6 @@
 | データベース | PostgreSQL |
 | インフラ | Render |
 | Web API | Google Maps Platform |
+
+## ■ 画面遷移図
+[画面遷移図](https://www.figma.com/file/BzFTMsvS3IrfwrX9aJ00Cw/%E3%81%8A%E3%81%A4%E3%81%BE%E3%81%BF%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3?type=design&node-id=0%3A1&mode=design&t=TT7rSVDGYJwMK68A-1)
