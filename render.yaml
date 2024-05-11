@@ -1,0 +1,21 @@
+databases:
+  - name: otsumami-online-db
+    databaseName: otsumami_online_db
+    user: otsumami-online
+    region: singapore
+
+services:
+  - type: web
+    name: otsumami-online
+    env: ruby
+    region: singapore
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: otsumami-online-db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
