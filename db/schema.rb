@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_12_135430) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "prefecture_id", null: false
+    t.bigint "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
