@@ -1,7 +1,9 @@
 <div class="fixed w-full top-0">
   <div class="flex justify-center bg-namari h-20">
     <div class="container text-center relative">
-      <%= image_tag "logo.png", class: "left-0 ml-6 h-16 my-2 w-auto inline-block"%>
+      <%= link_to root_path do%>
+        <%= image_tag "logo.png", class: "left-0 ml-6 h-16 my-2 w-auto inline-block"%>
+      <% end %>
       <div class="inline-block h-full mx-7 mt-2">
         <input class="px-2 py-1 bg-gohun text-center" placeholder="都道府県">
         <input class="px-2 py-1 bg-gohun text-center" placeholder="市区町村">
