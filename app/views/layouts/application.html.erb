@@ -8,10 +8,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <script src="https://kit.fontawesome.com/2f60d7bb15.js" crossorigin="anonymous"></script>
   </head>
 
   <body class="bg-base text-sumi">
     <%= render 'layouts/header'%>
     <%= yield %>
+    <%= render 'layouts/footer'%>
   </body>
 </html>
