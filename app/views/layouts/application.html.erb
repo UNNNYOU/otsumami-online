@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <script src="https://kit.fontawesome.com/2f60d7bb15.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   </head>
 
   <body class="bg-base text-sumi">
-    <%= render 'layouts/header'%>
+    <%= render 'shared/header'%>
     <%= yield %>
-    <%= render 'layouts/footer'%>
+    <%= render 'shared/footer'%>
   </body>
 </html>
