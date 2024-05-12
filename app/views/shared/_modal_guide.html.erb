@@ -1,0 +1,37 @@
+<button class="mt-20 text-2xl btn bg-gohun btn-wide hover:bg-gohun text-sumi" onclick="my_modal_3.showModal()">使用方法</button>
+<dialog id="my_modal_3" class="modal">
+  <div class="bg-gohun rounded-b-box rounded-t-box col-start-1 row-start-1 w-auto h-[700px] max-w-lg scale-90 transform p-6 transition duration-200 ease-out">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <%= image_tag "1.png", class: "w-full h-[600px]" %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag "2.png", class: "w-full h-[600px]" %>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag "3.png", class: "w-full h-[600px]"%>
+        </div>
+        <div class="swiper-slide">
+          <%= image_tag "4.png", class: "w-full h-[600px]" %>
+        </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<script>
+    const swiper = new Swiper(".swiper", {
+    // 前後の矢印
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
