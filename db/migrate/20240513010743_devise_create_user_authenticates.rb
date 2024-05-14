@@ -3,7 +3,7 @@
 class DeviseCreateUserAuthenticates < ActiveRecord::Migration[7.1]
   def change
     create_table :user_authenticates do |t|
-      t.references :user, foreign_key: true
+      t.references :user, foreign_key: true, null: false
 
       ## Database authenticatable
       t.string :email, null: false, default: ""

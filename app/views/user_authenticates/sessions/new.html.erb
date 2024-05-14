@@ -1,0 +1,37 @@
+<div class="bg-gohun min-h-screen flex flex-col pt-20">
+  <div class="container max-w-md mx-auto flex-1 flex flex-col justify-center">
+    <div class="bg-base-yellow rounded shadow-md text-sumi w-full border">
+      <div class="flex">
+        <div class="w-1/2 flex justify-center items-center">
+          <h1 class="m-4 text-2xl text-center">ログイン</h1>
+        </div>
+        <div class="w-1/2 flex justify-center items-center bg-namari">
+          <%= link_to "新規登録", new_user_authenticate_registration_path, class: "m-4 text-2xl text-center" %>
+        </div>
+
+      </div>
+
+      <div class="px-6 mt-8">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.label :email, "メールアドレス"%>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gohun block border border-grey-light w-full p-3 rounded mb-4" %>
+
+          <%= f.label :password, "パスワード"%>
+          <%= f.password_field :password, autocomplete: "new-password", class: "bg-gohun block border border-grey-light w-full p-3 rounded mb-4" %>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field flex items-center">
+              <%= f.check_box :remember_me, class: "checkbox checkbox-sm border-opacity-100"%>
+              <%= f.label :remember_me, "ログイン情報を記憶する", class: "ml-1"%>
+            </div>
+          <% end %>
+
+          <div class="w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-6">
+            <%= f.submit "ログイン", class: "bg-gohun block border border-grey-light w-full p-3 rounded mb-5" %>
+          </div>
+  
+        <% end %>
+     </div>
+    </div>
+  </div>
+</div>

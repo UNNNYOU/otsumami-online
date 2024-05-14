@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_13_010743) do
   end
 
   create_table "user_authenticates", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

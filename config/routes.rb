@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :user_authenticates
+  devise_for :user_authenticates, controllers: { registrations: 'user_authenticates/registrations' }
+
   get 'users/show'
   root 'static_pages#top'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
