@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_13_010743) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_14_020354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "posts", force: :cascade do |t|
+    t.float "rating", null: false
+    t.string "title", null: false
+    t.string "body"
+    t.boolean "local", default: false, null: false
+    t.string "place_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "user_id", null: false
+    t.bigint "prefecture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_posts_on_prefecture_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
@@ -42,6 +58,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_13_010743) do
     t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
 
+  add_foreign_key "posts", "prefectures"
+  add_foreign_key "posts", "users"
   add_foreign_key "user_authenticates", "users"
   add_foreign_key "users", "prefectures"
 end
