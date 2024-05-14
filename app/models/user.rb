@@ -1,3 +1,6 @@
 class User < ApplicationRecord
-  belongs_to :prefecture
+  has_one :user_authenticates
+  belongs_to :prefecture, optional: true
+
+  devise :authenticatable
 end
