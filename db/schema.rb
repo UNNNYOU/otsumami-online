@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_14_020354) do
   enable_extension "plpgsql"
 
   create_table "posts", force: :cascade do |t|
-    t.float "rating", null: false
+    t.float "rating", default: 5.0, null: false
     t.string "title", null: false
     t.string "body"
     t.boolean "local", default: false, null: false

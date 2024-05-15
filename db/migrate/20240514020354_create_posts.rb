@@ -1,7 +1,7 @@
 class CreatePosts < ActiveRecord::Migration[7.1]
   def change
     create_table :posts do |t|
-      t.float :rating, null: false
+      t.float :rating, null: false, default: 5.0
       t.string :title, null: false
       t.string :body
       t.boolean :local, null: false, default: false
