@@ -1,0 +1,31 @@
+<div class="flex justify-center items-center min-h-screen pt-20">
+  <div class="container flex">
+    <div class="w-2/5 mr-10 mt-10">
+      <h1 class="text-4xl text-center">新しく投稿</h1>
+      <%= form_with model: @post, local: true do |f| %>
+
+      <%= render "shared/error_messages", object: f.object%>
+        <h1 class="text-center text-2xl mt-10">おすすメーター</1>
+        <div class="mt-6 flex justify-center">
+          <div class="rating rating-lg">
+            <%= f.radio_button :rating, 1, class: 'mask mask-star-2 bg-usuki ' %>
+            <%= f.radio_button :rating, 2, class: 'mask mask-star-2 bg-usuki ml-5' %>
+            <%= f.radio_button :rating, 3, class: 'mask mask-star-2 bg-usuki ml-5' %>
+            <%= f.radio_button :rating, 4, class: 'mask mask-star-2 bg-usuki ml-5' %>
+            <%= f.radio_button :rating, 5, class: 'mask mask-star-2 bg-usuki ml-5' %>
+          </div>
+        </div>
+
+        <div class="mt-10 flex justify-center">
+          <%= f.text_field :title, class:"text-sm bg-gohun border-2 w-4/5 h-10 p-5", placeholder: "ここにおつまみの名称を入れてください"%>
+        </div>
+        <div class="mt-10 flex justify-center">
+          <%= f.text_area :body, class:"text-sm bg-gohun border-2 w-4/5 h-40 p-5", row: "10", placeholder: "おつまみについて入力を行なってください" %>
+        </div>
+        <%= f.submit "投稿",class:"btn btn-wide bg-gohun hover:bg-usuki text-sumi mt-10" %>
+      <% end %>
+    </div>
+    <div class="w-3/5 h-screen bg-sumi">
+    </div>
+  </div>
+</div>
