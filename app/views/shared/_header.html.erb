@@ -8,7 +8,7 @@
         <input class="px-2 py-1 bg-gohun text-center" placeholder="都道府県">
         <input class="px-2 py-1 bg-gohun text-center" placeholder="市区町村">
         <input class="px-20 py-1 bg-gohun text-center" placeholder="検索">
-        <button class="px-2 py-1 bg-gohun text-center">検索</button>
+        <%= link_to "検索", posts_path, class: "px-2 py-2 bg-gohun text-center"%>
       </div>
 
       <% if user_authenticate_signed_in? %>
