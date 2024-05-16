@@ -17,11 +17,9 @@ gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
-
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+# Hotwire関係のgem
 gem "stimulus-rails"
+gem "turbo-rails"
 
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails"
@@ -31,6 +29,9 @@ gem "jbuilder"
 
 # 認証
 gem "devise"
+
+# 環境変数用のgem
+gem "dotenv-rails"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -47,7 +48,7 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+# active storage関係のgem
 gem "active_storage_validations"
 gem "aws-sdk-s3", require: false
 gem "image_processing", "~> 1.2"
