@@ -17,7 +17,15 @@
               <% if post.local %>
                 <span class="indicator-item badge text-lg top-4 right-[85px] bg-usuki text-sumi">地元民のおすすめ</span>
               <% end %>
-              <%= image_tag "top-main.jpg", class: "w-[300px]" %>
+              <%if post.images.attached? %>
+                <div class="w-[300px]">
+                  <%= image_tag url_for(post.images.first), class: "w-full h-[200px]"%>
+                </div>
+              <%else%>
+                <div class="w-[300px]">
+                  <%= image_tag "top-main.jpg"%>
+                </div>
+              <% end %>
             </div>
             <div class="card-body bg-gohun h-[100px] p-2">
               <h2 class="card-title text-lg">
