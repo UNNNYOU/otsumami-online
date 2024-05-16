@@ -22,7 +22,7 @@
         <div class="mt-5">
           <%= f.label :images do %>
             <i class="fa-solid fa-camera bg-namari p-8 text-gohun"></i>
-            <%= f.file_field :images, multiple: true, class: "hidden" %>
+            <%= f.file_field :images, multiple: true, accept: "image/jpeg,image/gif,image/png" ,class: "hidden" %>
           <%end%>
         </div>
       
