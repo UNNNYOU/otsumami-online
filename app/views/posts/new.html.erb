@@ -42,22 +42,39 @@
   #map {
       height: 100%;
     }
-  </style>
+</style>
 
-  <script async>
-    let map
+<script async>
+  let map
+  let marker
 
-    //初期マップの設定
-    async function initMap(){
+  //初期マップの設定
+  async function initMap(){
 
-      const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
-      const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+    const { Map } = await google.maps.importLibrary("maps");
 
-      const map = new Map(document.getElementById("map"),  {
-        zoom: 6,
-        center: { lat: 35.6803997, lng: 139.7690174 },
-        mapId: "971b4d788eb3eff6", // Map ID is required for advanced markers.
+    map = new Map(document.getElementById("map"),  {
+      zoom: 5,
+      center: { lat: 35.6803997, lng: 139.7690174 },
+      mapId: "<%= ENV['GOOGLE_MAP_ID'] %>", // Map ID is required for advanced markers.
+    });
+
+    map.addListener('click', function(e) {
+      getClickLatLng(e.latLng, map);
+    });
+
+    function getClickLatLng(lat_lng, map) {
+      if (marker) {
+      marker.setPosition( lat_lng );
+      } else {
+      marker = new google.maps.Marker({
+        position: lat_lng,
+        map: map
       });
+      }
     }
-  </script>
+    
+  }
+</script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"]%>&callback=initMap" async defer></script>
