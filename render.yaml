@@ -1,6 +1,6 @@
 databases:
   - name: otsumami-online-db
-    databaseName: otsumami_online_db
+    databaseName: otsumami_online_db_4tzv
     user: otsumami-online
     region: singapore
 
