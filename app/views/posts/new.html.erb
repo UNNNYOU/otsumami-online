@@ -29,6 +29,10 @@
         <div class="mt-6 flex justify-center">
           <%= f.text_area :body, class:"text-sm bg-gohun border-2 w-4/5 h-36 p-5", row: "10", placeholder: "おつまみについて入力を行なってください" %>
         </div>
+
+        <%= f.hidden_field :latitude%>
+        <%= f.hidden_field :longitude%>
+
         <%= f.submit "投稿",class:"btn btn-wide bg-gohun hover:bg-usuki text-sumi mt-10 mb-4" %>
       <% end %>
     </div>
@@ -45,16 +49,14 @@
 </style>
 
 <script async>
-  let map
-  let marker
-
   //初期マップの設定
   async function initMap(){
+    let marker
 
     const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
     const { Map } = await google.maps.importLibrary("maps");
 
-    map = new Map(document.getElementById("map"),  {
+    let map = new Map(document.getElementById("map"),  {
       zoom: 5,
       center: { lat: 35.6803997, lng: 139.7690174 },
       mapId: "<%= ENV['GOOGLE_MAP_ID'] %>", // Map ID is required for advanced markers.
@@ -62,6 +64,11 @@
 
     map.addListener('click', function(e) {
       getClickLatLng(e.latLng, map);
+      let lat = e.latLng.lat();
+      let lng = e.latLng.lng();
+
+      document.getElementById("post_latitude").value = lat;
+      document.getElementById("post_longitude").value = lng;
     });
 
     function getClickLatLng(lat_lng, map) {
@@ -74,7 +81,6 @@
       });
       }
     }
-    
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"]%>&callback=initMap" async defer></script>
