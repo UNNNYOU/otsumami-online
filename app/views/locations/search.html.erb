@@ -1,0 +1,67 @@
+<div class="flex justify-center items-center min-h-screen pt-16">
+  <div class="container flex">
+    <div class="w-2/5 mr-10 mt-10 h-full">
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+      <h1 class="text-4xl text-center">投稿</h1>
+   </div>
+    <div class="w-3/5 mt-3">
+      <div id='map'></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #map {
+      height: 100%;
+    }
+</style>
+
+<script async>
+  //初期マップの設定
+  async function initMap(){
+
+    const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+    const { Map } = await google.maps.importLibrary("maps");
+
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
+
+      let map = new Map(document.getElementById("map"),  {
+        zoom: 12,
+        center: { lat: latitude, lng: longitude },
+        mapId: "<%= ENV['GOOGLE_MAP_ID'] %>", // Map ID is required for advanced markers.
+      });
+
+      let marker = new google.maps.Marker({
+        map : map,
+        position : { lat: latitude, lng: longitude },
+        icon: {
+          fillColor: "#005CAF",                //塗り潰し色
+          fillOpacity: 1.0,                    //塗り潰し透過率
+          path: google.maps.SymbolPath.CIRCLE, //マーカーの形を指定
+          scale: 8,                           //サイズ
+          strokeColor: "#000000",              //枠の色
+          strokeWeight: 1.0                    //枠の透過率
+        },
+      });
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"]%>&callback=initMap" async defer></script>
