@@ -33,6 +33,9 @@ gem "devise"
 # 環境変数用のgem
 gem "dotenv-rails"
 
+# JavaScriptに関するgem
+gem "gon"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
