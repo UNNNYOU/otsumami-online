@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   resources :posts
   get "users/show"
+  get "locations/search", to: "locations#search"
+
   get "up" => "rails/health#show", :as => :rails_health_check
 end
