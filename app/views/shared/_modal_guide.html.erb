@@ -26,11 +26,13 @@
 </dialog>
 
 <script>
+  if( typeof swiper === 'undefined' ){
     const swiper = new Swiper(".swiper", {
-    // 前後の矢印
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
+      // 前後の矢印
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  }
 </script>

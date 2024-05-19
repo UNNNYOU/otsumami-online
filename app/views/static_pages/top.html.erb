@@ -1,4 +1,4 @@
-<div class="flex justify-center items-center pt-20 p-10 bg-usuki">
+<div class="flex justify-center items-center bg-usuki">
   <div class="container">
     <div class="flex items-center h-[600px]">
       <div class="w-1/2 h-auto">
@@ -17,6 +17,6 @@
 </div>
 <div class="h-[400px]">
   <div class="flex justify-center items-center h-full">
-      <%= link_to "現在位置から周辺を検索",  locations_search_path, class: "px-10 py-6 border-2 text-3xl bg-usuki"%>
+    <%= link_to "現在位置から周辺を検索",  locations_search_path, class: "px-10 py-6 border-2 text-3xl bg-usuki", data: {turbo: false}%>
   </div>
 </div>
