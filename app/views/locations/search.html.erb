@@ -3,22 +3,24 @@
     <div class="w-2/5 h-screen overflow-auto hidden-scrollbar mr-10">
       <div>
         <% @posts.each do |post| %>
-          <div id="post-<%= post.id %>", class="card card-side h-[150px] bg-gohun shadow-xl mt-5">
-            <%if post.images.attached? %>
-              <div class="w-[150px] h-[150px] ">
-                <%= image_tag url_for(post.images.first), class: "w-full h-full rounded-l-xl"%>
-              </div>
-            <%else%>
-              <div class="w-[150px] h-[150px] ">
-                <%= image_tag "top-main.jpg", class: "w-full h-full rounded-l-xl"%>
-              </div>
-            <% end %>
+          <%= link_to post_path(post), data: { turbo: false } do%>
+            <div id="post-<%= post.id %>", class="card card-side h-[150px] bg-gohun shadow-xl mt-5">
+              <%if post.images.attached? %>
+                <div class="w-[150px] h-[150px] ">
+                  <%= image_tag url_for(post.images.first), class: "w-full h-full rounded-l-xl"%>
+                </div>
+              <%else%>
+                <div class="w-[150px] h-[150px] ">
+                  <%= image_tag "top-main.jpg", class: "w-full h-full rounded-l-xl"%>
+                </div>
+              <% end %>
 
-            <div class="card-body p-4">
-              <h2 class="card-title"><%= post.title%></h2>
-              <p class="text-xl"><%= post.body %></p>
+              <div class="card-body p-4">
+                <h2 class="card-title"><%= post.title%></h2>
+                <p class="text-xl"><%= post.body %></p>
+              </div>
             </div>
-          </div>
+          <%end%>
         <%end%>
       </div>
     </div>
@@ -95,3 +97,4 @@
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"]%>&v=beta&libraries=marker&callback=initMap" async defer></script>
+
