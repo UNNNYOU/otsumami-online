@@ -1,4 +1,4 @@
-<div class="flex justify-center items-center min-h-screen pt-16">
+<div class="flex justify-center items-center min-h-screen">
   <div class="container flex">
     <div class="w-2/5 mr-10 mt-10">
       <h1 class="text-4xl text-center">新しく投稿</h1>
@@ -36,7 +36,7 @@
         <%= f.submit "投稿",class:"btn btn-wide bg-gohun hover:bg-usuki text-sumi mt-10 mb-4" %>
       <% end %>
     </div>
-    <div class="w-3/5 mt-3">
+    <div class="w-3/5">
       <div id='map'></div>
     </div>
   </div>
@@ -44,7 +44,7 @@
 
 <style>
   #map {
-      height: 100%;
+      height: 100vh;
     }
 </style>
 
@@ -73,14 +73,14 @@
 
     function getClickLatLng(lat_lng, map) {
       if (marker) {
-      marker.setPosition( lat_lng );
+        marker.position =  lat_lng ;
       } else {
-      marker = new google.maps.Marker({
-        position: lat_lng,
-        map: map
-      });
+        marker = new google.maps.marker.AdvancedMarkerView({
+          position: lat_lng,
+          map: map
+        });
       }
     }
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"]%>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"]%>&v=beta&libraries=marker&callback=initMap" async defer></script>
