@@ -2,7 +2,7 @@
   <div class="container flex">
     <div class="w-2/5 mr-10 mt-10">
       <h1 class="text-4xl text-center">新しく投稿</h1>
-      <%= form_with model: @post, local: true do |f| %>
+      <%= form_with model: @post, local: true, data:{ turbo: false } do |f| %>
 
       <%= render "shared/error_messages", object: f.object%>
         <h1 class="text-center text-xl mt-6">おすすメーター</1>
