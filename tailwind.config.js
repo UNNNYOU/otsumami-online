@@ -16,6 +16,7 @@ module.exports = {
       base: "#FFFAF2",
       sumi: "#1C1C1C",
       namari: "#787878",
+      torinoko: "#DAC9A6",
     },
   },
 };

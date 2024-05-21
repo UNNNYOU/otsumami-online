@@ -1,36 +1,39 @@
 <div class="w-full top-0 z-[10]">
   <div class="flex justify-center bg-namari h-20">
-    <div class="container text-center relative">
+    <div class="container relative flex justify-between items-center">
       <%= link_to root_path do%>
         <%= image_tag "logo.png", class: "left-0 ml-6 h-16 my-2 w-auto inline-block"%>
       <% end %>
-      <div class="inline-block h-full mx-7 mt-2">
+      <div class="inline-block h-full mt-12">
         <input class="px-2 py-1 bg-gohun text-center" placeholder="都道府県">
         <input class="px-2 py-1 bg-gohun text-center" placeholder="市区町村">
         <input class="px-20 py-1 bg-gohun text-center" placeholder="検索">
         <%= link_to "検索", posts_path, class: "px-2 py-2 bg-gohun text-center"%>
       </div>
 
-      <% if user_authenticate_signed_in? %>
-        <div class="inline-block">
-          <%= link_to "投稿", new_post_path, class: "bg-gohun text-sumi btn px-8 hover:bg-usuki", data: {turbo: false}%>
-        </div>
-        <div class="dropdown dropdown-end ml-3">
-          <button class="btn btn-square btn-ghost h-16 w-20 inline-block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="swap-off my-1 text-gohun inline-block w-14 h-14 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-          </button>
-          <ul class="mt-5 p-2 shadow menu dropdown-content z-[1] bg-gohun rounded-box w-52">
-            <li><a href="#">マイページ</a></li>
-            <li><%= link_to "周辺検索", locations_search_path, data: {turbo: false}%></li>
-            <li><a href="#">ブックマーク</a></li>
-            <li><%=link_to "ログアウト", destroy_user_authenticate_session_path, data: {turbo_method: :delete}%></li>
-          </ul>
-        </div>
-      <%else%>
-        <div class="inline-block">
-          <%= link_to "ログイン", new_user_authenticate_session_path, class: "btn bg-gohun text-sumi px-4 py-1 hover:bg-usuki"%>
-        </div>
-      <%end%>
+      <div>
+        <% if user_authenticate_signed_in? %>
+          <div class="inline-block">
+            <%= link_to "投稿", new_post_path, class: "bg-gohun text-sumi btn px-8 hover:bg-usuki", data: {turbo: false}%>
+          </div>
+          <div class="dropdown dropdown-end ml-3">
+            <button class="btn btn-square btn-ghost h-16 w-20 inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="swap-off my-1 text-gohun inline-block w-14 h-14 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <ul class="mt-5 p-2 shadow menu dropdown-content z-[1] bg-gohun rounded-box w-52">
+              <li><%= link_to "マイページ", user_path(current_user_authenticate.user_id) %></li>
+
+              <li><%= link_to "周辺検索", locations_search_path, data: {turbo: false}%></li>
+              <li><a href="#">ブックマーク</a></li>
+              <li><%=link_to "ログアウト", destroy_user_authenticate_session_path, data: {turbo_method: :delete}%></li>
+            </ul>
+          </div>
+        <%else%>
+          <div class="inline-block">
+            <%= link_to "ログイン", new_user_authenticate_session_path, class: "btn bg-gohun text-sumi px-4 py-1 hover:bg-usuki"%>
+          </div>
+        <%end%>
+      </div>
     </div>
   </div>
 </div>
