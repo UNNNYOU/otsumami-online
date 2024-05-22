@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :ensure_correct_user, only: %i[edit update]
+  before_action :ensure_correct_user, only: %i[edit update destroy]
 
   def index
     @posts = Post.all
@@ -37,6 +37,12 @@ class PostsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @post = current_user_authenticate.user.posts.find(params[:id])
+    @post.destroy
+    redirect_to root_path
   end
 
   private
