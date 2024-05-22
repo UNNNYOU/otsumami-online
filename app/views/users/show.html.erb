@@ -37,7 +37,7 @@
                   <div><%= post.title.truncate(16) %></div>
                   <div>
                     <%= link_to edit_post_path(post.id), data: {turbo: false} do%><i class="fa-solid fa-pen-to-square ml-2 text-xl"></i><%end%>
-                    <i class="fa-solid fa-trash-can ml-1 text-xl"></i>
+                    <%= link_to post_path(post.id), data: {turbo_method: :delete, turbo_confirm: '削除してよろしいですか?'} do %><i class="fa-solid fa-trash-can ml-1 text-xl"></i><%end%>
                   </div>
                 </div>
                 <p class="text-sm mt-4"><%= post.body.truncate(190) %></p>
