@@ -3,17 +3,17 @@
       <div class="w-4/12">
         <div class="w-4/5 bg-base h-full border-r-2">
           <p class="mb-4 ml-10 pt-8 text-sumj">
-            <%= link_to 'javascript:history.back()', class: "text-xl" do%>
+            <%= link_to 'javascript:history.back()', data: {turbo: false} ,class: "text-xl" do%>
               <i class="fa-solid fa-angles-left"></i>戻る
             <%end%>
           </p>
-          <p class="mb-4 mx-8 py-4 mt-8 text-sumi text-4xl text-center border-2 bg-usuki">
+          <p class="mb-4 mx-8 py-4 mt-8 text-sumi text-3xl text-center border-2 bg-usuki">
             <i class="fa-solid fa-list mr-4"></i>投稿一覧
           </p>
-          <p class="mb-4 py-4 mt-8 text-sumi text-4xl text-center ">
+          <p class="mb-4 py-4 mt-8 text-sumi text-3xl text-center ">
             <i class="fa-regular fa-bookmark mr-4"></i>ブックマーク
           </p>
-          <p class="mb-4 py-4 mt-8 text-sumi text-4xl text-center ">
+          <p class="mb-4 py-4 mt-8 text-sumi text-3xl text-center ">
             <i class="fa-solid fa-gears mr-4"></i>設定
           </p>
         </div>
@@ -33,14 +33,14 @@
               <% end %>
 
               <div class="p-6 w-2/3">
-                <div class="card-title border-b text-3xl">
-                  <a><%= post.title%></a>
+                <div class="card-title border-b text-3xl flex justify-between">
+                  <div><%= post.title.truncate(16) %></div>
                   <div>
-                    <i class="fa-solid fa-pen-to-square ml-2 text-xl"></i>
+                    <%= link_to edit_post_path(post.id), data: {turbo: false} do%><i class="fa-solid fa-pen-to-square ml-2 text-xl"></i><%end%>
                     <i class="fa-solid fa-trash-can ml-1 text-xl"></i>
                   </div>
                 </div>
-                <p class="text-sm mt-4"><%= post.body.truncate(100) %></p>
+                <p class="text-sm mt-4"><%= post.body.truncate(190) %></p>
               </div>
             </div>
           <%end%>

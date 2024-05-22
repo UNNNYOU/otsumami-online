@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many_attached :images
 
   validates :rating, presence: true
-  validates :title, presence: true, length: {maximum: 10}
+  validates :title, presence: true, length: {maximum: 32}
   validates :body, length: {maximum: 256}
   validates :images, content_type: %i[png jpg jpeg], limit: {max: 4}
 
