@@ -29,12 +29,14 @@
                 <% end %>
               </div>
               <div class="card-body bg-gohun h-[100px] p-2">
-                <h2 class="card-title text-lg">
-                  <%= post.title.truncate(10) %>
-                </h2>
-                <div class="card-actions flex justify-end items-end mt-7">
-                  <a>〇〇県〇〇市</a>
-                  <a class="ml-10"><%= post.created_at.strftime('%Y/%m/%d')%></a>
+                <p class="card-title text-xl flex items-end">
+                  <a><%= post.title.truncate(10) %></a>
+                  <% if post.prefecture.present? %>
+                    <a class="text-sm font-normal"><%= post.prefecture.name %></a>
+                  <% end %>
+                </p>
+                <div class="card-actions flex justify-end">
+                  <div><%= post.created_at.strftime('%Y/%m/%d')%></div>
                 </div>
               </div>
             </div>
