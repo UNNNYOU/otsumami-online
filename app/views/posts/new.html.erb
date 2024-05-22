@@ -1,6 +1,11 @@
 <div class="flex justify-center items-center min-h-screen">
   <div class="container flex">
-    <div class="w-2/5 mr-10 mt-10">
+    <div class="w-2/5 mr-10">
+      <p class="mt-6 mb-4">
+        <%= link_to 'javascript:history.back()', class: "text-xl" do%>
+          <i class="fa-solid fa-angles-left"></i>戻る
+        <%end%>
+      </p>
       <h1 class="text-4xl text-center">新しく投稿</h1>
       <%= form_with model: @post, local: true, data:{ turbo: false } do |f| %>
 
