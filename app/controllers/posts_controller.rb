@@ -17,6 +17,12 @@ class PostsController < ApplicationController
   def create
     @post = current_user_authenticate.user.posts.new(post_params)
 
+    if @post.latitude.present? && @post.longitude.present?
+      @results = Geocoder.search([@post.latitude, @post.longitude]).first.display_name.split(', ')
+      @result = @results & Prefecture.pluck(:name)
+      @prefecture = Prefecture.find_by(name: @result).id
+      @post.prefecture_id = @prefecture
+    end
     if @post.save
       redirect_to root_path
     else
@@ -32,6 +38,14 @@ class PostsController < ApplicationController
   def update
     @post = current_user_authenticate.user.posts.find(params[:id])
     gon.post = @post
+
+    if @post.latitude.present? && @post.longitude.present?
+      @results = Geocoder.search([@post.latitude, @post.longitude]).first.display_name.split(', ')
+      @result = @results & Prefecture.pluck(:name)
+      @prefecture = Prefecture.find_by(name: @result).id
+      @post.prefecture_id = @prefecture
+    end
+
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
@@ -49,7 +63,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:rating, :title, :body, :local, :place_id, :latitude, :longitude, :prefecture_id,
-                                 images: [])
+                                 images: []).merge(prefecture_id: @prefecture)
   end
 
   def ensure_correct_user
