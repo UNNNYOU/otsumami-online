@@ -1,7 +1,7 @@
-<div class="flex justify-center min-h-screen pt-20">
+<div class="flex justify-center min-h-screen ">
   <div class="container">
-    <div class="mt-20 text-4xl">
-      <h1>〇〇県〇〇市〇〇〇〇検索結果<h1>
+    <div class="mt-10 text-4xl">
+      <h1><%= @search[:prefecture_name_cont] %>  <%= @search[:title_or_body_cont] %>  検索結果<h1>
     </div>
     <div class="mt-16">
       <a class="text-3xl">合計　<%= @posts.count %>件</a>
@@ -9,7 +9,7 @@
       <a class="ml-3 text-xl">古い順</a>
       <a class="ml-3 text-xl">地元民のおすすめ</a>
     </div>
-    <div class="my-10 flex justify-center">
+    <div class="my-10 flex">
       <div class="flex flex-wrap">
         <% @posts.each do |post|%>
           <%= link_to post_path(post), data: {turbo: false} do%>
