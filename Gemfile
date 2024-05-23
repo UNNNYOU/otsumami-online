@@ -27,15 +27,18 @@ gem 'cssbundling-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
-# 認証
+# 認証のgem
 gem 'devise'
 
 # 環境変数用のgem
 gem 'dotenv-rails'
 
-# JavaScriptに関するgem
+# JavaScriptのgem
 gem 'geocoder'
 gem 'gon'
+
+# 検索用のgem
+gem 'ransack'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
