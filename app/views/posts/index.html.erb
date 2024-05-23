@@ -5,7 +5,7 @@
     </div>
     <div class="mt-16">
       <a class="text-3xl">合計　<%= @posts.count %>件</a>
-      <a class="ml-5 text-xl"><%= sort_link(@q, :updated_at, '新着順' ) %></a>
+      <a class="ml-5 text-xl"><%= sort_link(@q, :updated_at, '新着順', default_order: :desc  ) %></a>
       <a class="ml-3 text-xl"><%= sort_link(@q, :local, '地元民のおすすめ', default_order: :desc ) %></a>
     </div>
     <div class="my-5 mb-20 flex">
@@ -35,7 +35,7 @@
                   <% end %>
                 </p>
                 <div class="card-actions flex justify-end">
-                  <div><%= post.created_at.strftime('%Y/%m/%d')%></div>
+                  <div><%= post.updated_at.strftime('%Y/%m/%d')%></div>
                 </div>
               </div>
             </div>
