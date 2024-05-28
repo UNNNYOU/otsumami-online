@@ -1,42 +1,45 @@
-<div class="flex justify-center min-h-screen pt-20">
+<div class="flex justify-center min-h-screen ">
   <div class="container">
-    <div class="mt-20 text-4xl">
-      <h1>〇〇県〇〇市〇〇〇〇検索結果<h1>
+    <div class="mt-10 text-4xl">
+      <h1><%= @search[:prefecture_name_cont] %>  <%= @search[:title_or_body_cont] %>  検索結果<h1>
     </div>
     <div class="mt-16">
       <a class="text-3xl">合計　<%= @posts.count %>件</a>
-      <a class="ml-5 text-xl">新しい順</a>
-      <a class="ml-3 text-xl">古い順</a>
-      <a class="ml-3 text-xl">地元民のおすすめ</a>
+      <a class="ml-5 text-xl"><%= sort_link(@q, :updated_at, '新着順', default_order: :desc  ) %></a>
+      <a class="ml-3 text-xl"><%= sort_link(@q, :local, '地元民のおすすめ', default_order: :desc ) %></a>
     </div>
-    <div class="my-10 flex justify-center">
+    <div class="my-5 mb-20 flex">
       <div class="flex flex-wrap">
         <% @posts.each do |post|%>
-          <div class="card w-[300px] bg-base-100 shadow-xl mt-10 mx-2 hover:opacity-50">
-            <div class="indicator">
-              <% if post.local %>
-                <span class="indicator-item badge text-lg top-4 right-[85px] bg-usuki text-sumi">地元民のおすすめ</span>
-              <% end %>
-              <%if post.images.attached? %>
-                <div class="w-[300px]">
-                  <%= image_tag url_for(post.images.first), class: "w-full h-[200px]"%>
+          <%= link_to post_path(post), data: {turbo: false} do%>
+            <div class="card w-[300px] bg-base-100 shadow-xl mt-10 top-4 mx-2 hover:opacity-50">
+              <div class="indicator">
+                <% if post.local %>
+                  <span class="indicator-item badge text-lg top-4 right-[85px] bg-usuki text-sumi">地元民のおすすめ</span>
+                <% end %>
+                <%if post.images.attached? %>
+                  <div class="w-[300px]">
+                    <%= image_tag url_for(post.images.first), class: "w-full h-[200px]"%>
+                  </div>
+                <%else%>
+                  <div class="w-[300px]">
+                    <%= image_tag "top-main.jpg"%>
+                  </div>
+                <% end %>
+              </div>
+              <div class="card-body bg-gohun h-[100px] p-2">
+                <p class="card-title text-xl flex items-end">
+                  <a><%= post.title.truncate(10) %></a>
+                  <% if post.prefecture.present? %>
+                    <a class="text-sm font-normal"><%= post.prefecture.name %></a>
+                  <% end %>
+                </p>
+                <div class="card-actions flex justify-end">
+                  <div><%= post.updated_at.strftime('%Y/%m/%d')%></div>
                 </div>
-              <%else%>
-                <div class="w-[300px]">
-                  <%= image_tag "top-main.jpg"%>
-                </div>
-              <% end %>
-            </div>
-            <div class="card-body bg-gohun h-[100px] p-2">
-              <h2 class="card-title text-lg">
-                <%= post.title%>
-              </h2>
-              <div class="card-actions flex justify-end items-end mt-7">
-                <a>〇〇県〇〇市</a>
-                <a class="ml-24"><%= post.created_at.strftime('%Y/%m/%d')%></a>
               </div>
             </div>
-          </div>
+          <%end%>
         <%end%>
       </div>
     </div>

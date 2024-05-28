@@ -1,0 +1,103 @@
+<div class="flex justify-center items-center min-h-screen">
+  <div class="container flex">
+    <div class="w-1/2 mr-10 mt-6">
+      <p>
+        <%= link_to 'javascript:history.back()', class: "text-xl" do%>
+          <i class="fa-solid fa-angles-left"></i>戻る
+        <%end%>
+      </p>
+      <div class="overflow-auto hidden-scrollbar">
+        <a class="text-4xl ml-4 mt-8 inline-block"><%= @post.title %></a>
+        <div class="rating rating-md ml-2">
+          <% @post.rating.to_i.times do %>
+            <input class="mask mask-star-2 bg-usuki ml-1"/>
+          <% end %>
+        </div>
+        <div class="mt-12">
+          <div class="swiper w-2/3">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+            <% @post.images.each do |image|%>
+              <div class="swiper-slide"><%= image_tag url_for(image), class: "w-full m-auto h-[250px]"%></div>
+            <%end%>
+            </div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+
+        <div class="w-full border-b-2 mt-8 text-xl flex">
+          <%if @post.local%>
+            <a class="ml-4 m-auto"><i class="fa-solid fa-person-shelter fa-2x mr-2"></i>地元民</a>
+            <i class="fa-regular fa-thumbs-up text-end mr-4 mt-4"></i>
+            <i class="fa-regular fa-bookmark mr-4 mt-4"></i>
+          <%else%>
+            <a class="ml-2 m-auto"><i class="fa-solid fa-person-walking-luggage fa-2x mr-2"></i>旅行客</a>
+            <i class="fa-regular fa-thumbs-up mr-4 mt-4"></i>
+            <i class="fa-regular fa-bookmark mr-4 mt-4"></i>
+          <%end%>
+        </div>
+        <div class="mt-10 px-6">
+          <%= @post.body %>
+        </div>
+      </div>
+    </div>
+    <div class="w-1/2 relative">
+      <div id='map'></div>
+      <% if @post.latitude == nil && @post.longitude == nil %>
+        <div class="bg-sumi opacity-75 w-full h-screen absolute top-0 left-0"></div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<style>
+  #map {
+      height: 100vh;
+    }
+</style>
+
+<script>
+  if( typeof swiper === 'undefined' ){
+    const swiper = new Swiper(".swiper", {
+      // 前後の矢印
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  }
+</script>
+
+<script async>
+  //初期マップの設定
+  async function initMap(){
+    let latitude = gon.post.latitude;
+    let longitude = gon.post.longitude;
+
+    const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+    const { Map } = await google.maps.importLibrary("maps");
+
+    if ( latitude !== null && longitude !== null){
+      let map = new Map(document.getElementById("map"),  {
+        zoom: 12,
+        center: { lat: latitude, lng: longitude },
+        mapId: "<%= ENV['GOOGLE_MAP_ID'] %>", // Map ID is required for advanced markers.
+      });
+
+      let postMarker = new google.maps.marker.AdvancedMarkerView({
+          map : map,
+          position : { lat: latitude, lng: longitude },
+      })
+    } else {
+      let map = new Map(document.getElementById("map"),  {
+      zoom: 12,
+      center: { lat: 35.681236, lng: 139.767125 },
+      mapId: "<%= ENV['GOOGLE_MAP_ID'] %>", // Map ID is required for advanced markers.
+      });
+    }
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"]%>&v=beta&libraries=marker&callback=initMap" async defer></script>
