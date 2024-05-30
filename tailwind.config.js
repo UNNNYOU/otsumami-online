@@ -19,6 +19,7 @@ module.exports = {
       torinoko: "#DAC9A6",
       kachi: "#08192D",
       kuro: "#080808",
+      shironeri: "#FCFAF2",
     },
     extend: {
       keyframes: {
