@@ -13,7 +13,6 @@ module.exports = {
     colors: {
       usuki: "#FAD689",
       gohun: "#FFFFFB",
-      base: "#FFFAF2",
       sumi: "#1C1C1C",
       namari: "#787878",
       torinoko: "#DAC9A6",
