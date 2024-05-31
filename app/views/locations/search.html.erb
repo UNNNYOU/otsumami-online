@@ -1,43 +1,43 @@
-<div class="flex justify-center items-center min-h-screen">
-  <div class="container flex">
-    <div class="w-2/5 h-screen mr-10">
-      <p class="mt-6 mb-4">
-        <%= link_to 'javascript:history.back()', class: "text-xl" do%>
-          <i class="fa-solid fa-angles-left"></i>戻る
-        <%end%>
-      </p>
+<div class="flex justify-center items-center min-h-screen bg-sumi">
+  <div class="container xl:flex pt-16">
+    <div class="w-full xl:w-3/5">
+      <div id='map'></div>
+    </div>
+    <div class="px-2 w-full xl:w-2/5 h-screen xl:ml-10">
+      <p class="text-center text-shironeri mb-2">投稿一覧</p>
       <div class="h-5/6 overflow-auto hidden-scrollbar" >
         <% @posts.each do |post| %>
           <%= link_to post_path(post), data: { turbo: false } do%>
-            <div id="post-<%= post.id %>", class="card card-side h-[150px] bg-gohun shadow-xl mt-5 rounded-xl">
+            <div id="post-<%= post.id %>", class="card card-side h-[100px] bg-gohun shadow-xl mt-5 rounded-xl">
               <%if post.images.attached? %>
-                <div class="w-[150px] h-[150px] ">
+                <div class="w-[150px] h-[100px] ">
                   <%= image_tag url_for(post.images.first), class: "w-full h-full rounded-l-xl"%>
                 </div>
               <%else%>
-                <div class="w-[150px] h-[150px] ">
+                <div class="w-[150px] h-[100px] ">
                   <%= image_tag "top-main.png", class: "w-full h-full rounded-l-xl"%>
                 </div>
               <% end %>
 
               <div class="card-body p-4 w-2/3">
-                <h2 class="card-title"><%= post.title%></h2>
-                <p class="text-sm mt-3"><%= post.body.truncate(50) %></p>
+                <h2 class="text-sm card-title"><%= post.title%></h2>
+                <p class="text-xs mt-1"><%= post.body.truncate(50) %></p>
               </div>
             </div>
           <%end%>
         <%end%>
       </div>
     </div>
-    <div class="w-3/5">
-      <div id='map'></div>
-    </div>
   </div>
 </div>
 
 <style>
   #map {
-    height: 100vh;
+    height: 60vh;
+  }@media screen and (min-width:600px) {
+    #map{
+      height: 90vh
+    }
   }
 </style>
 
@@ -57,6 +57,10 @@
         zoom: 12,
         center: { lat: latitude, lng: longitude },
         mapId: "<%= ENV['GOOGLE_MAP_ID'] %>",
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        fullscreenControl: false,
       });
 
       //現在位置のマーカー
