@@ -1,10 +1,10 @@
 <div class="fixed w-full z-50">
   <div class="text-gohun bg-opacity-0 flex justify-center">
-    <div class="container">
+    <div class="container px-2">
       <div class="navbar">
         <div class="navbar-start">
           <div class="dropdown">
-            <%= link_to root_path do%>
+            <%= link_to root_path, data: {turbo: false} do%>
               <%= image_tag "logo.png", class: "left-0 ml-6 h-10 my-2 w-auto inline-block"%>
             <% end %>
           </div>
@@ -13,6 +13,7 @@
           <div class="drawer drawer-end">
             <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content flex justify-end mr-3">
+              <%= render "shared/search_modal"%>
               <label for="my-drawer-4" class="drawer-button btn btn-ghost btn-circle ">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
                   <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
@@ -42,7 +43,7 @@
                   <li><%= link_to "TOP", root_path%></li>
 
                   <li><%= link_to "周辺検索", locations_search_path, data: {turbo: false}%></li>
-                  <li><%= link_to "ログイン", new_user_authenticate_session_path%></li>
+                  <li><%= link_to "ログイン", new_user_authenticate_session_path, data: {turbo: false}%></li>
                 <%end%>
               </div>
               </ul>

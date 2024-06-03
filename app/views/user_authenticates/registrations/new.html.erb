@@ -1,8 +1,8 @@
 <body>
   <section class="min-h-screen flex items-stretch text-shironeri pt-16 bg-kuro">
     <div class="lg:flex w-1/2 hidden bg-kuro bg-no-repeat bg-cover relative items-center">
-      <%= image_tag 'authenticate.jpg', class: "absolute object-cover h-full"%>
-      <div class="absolute bg-kuro opacity-60 inset-0 z-0"></div>
+      <%= image_tag 'signup.jpg', class: "absolute object-cover h-full"%>
+      <div class="absolute bg-kuro opacity-60 inset-0 z-20"></div>
       <div class="w-full px-24 z-10">
         <h1 class="text-xl tracking-wide text-center">あなたが幸せな1日を過ごせますように</h1>
       </div>
@@ -19,12 +19,11 @@
       </div>
     </div>
     <div class="lg:w-1/2 w-full flex items-center justify-center text-center px-4 md:px-16 px-0 z-0 bg-kuro">
-      <div class="absolute lg:hidden z-10 inset-0 bg-kuro bg-no-repeat bg-cover items-center">
-        <%= image_tag 'authenticate.jpg', class: "absolute object-cover h-full"%>
-        <div class="absolute bg-kuro opacity-60 inset-0 z-0"></div>
-      </div>
-      <div class="w-full py-6 z-20">
-        <div class="py-6 space-x-2">
+      <%= image_tag 'signup.jpg', class: "absolute object-cover h-full z-20 lg:hidden"%>
+      <div class="absolute bg-kuro opacity-60 inset-0 z-20 lg:hidden"></div>
+      <div class="w-full pt-6 z-20">
+        <h1 class="text-xl">新規登録</h1>
+        <div class="py-10 space-x-2">
           <span class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">f</span>
           <span class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">G+</span>
           <span class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">in</span>
@@ -32,25 +31,25 @@
           <div class="class: "sm:w-2/3 w-full px-4 lg:px-0 mx-auto ">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= render "user_authenticates/shared/error_messages", resource: resource %>
-                <div class="pb-2 pt-4">
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full p-4 text-lg rounded-sm bg-black", placeholder: "メールアドレス" %>
+                <div class="pb-2 pt-4 px-2">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full p-4 text-lg rounded-sm bg-black border-b", placeholder: "メールアドレス" %>
                 </div>
-                <div class="pb-2 pt-4">
-                  <%= f.password_field :password, autocomplete: "new-password", class: "block w-full p-4 text-lg rounded-sm bg-black", placeholder: "パスワード" %>
+                <div class="pb-2 pt-4 px-2">
+                  <%= f.password_field :password, autocomplete: "new-password", class: "block w-full p-4 text-lg rounded-sm bg-black border-b", placeholder: "パスワード" %>
                 </div>
-                <div class="pb-2 pt-4">
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "block w-full p-4 text-lg rounded-sm bg-black", placeholder: "パスワード確認" %>
+                <div class="pb-2 pt-4 px-2">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "block w-full p-4 text-lg rounded-sm bg-black border-b", placeholder: "パスワード確認" %>
                 </div>
                 <div class="px-4 pb-2 pt-10 flex justify-center">
                   <%= f.submit "新規登録", class: "uppercase block w-1/2 p-2 text-lg border bg-kuro rounded-sm focus:outline-none hover:text-usuki" %>
                 </div>
             <% end %>
 
-            <div class="mt-10">
+            <div class="mt-6">
               <%= link_to "ログイン画面はこちら", new_user_authenticate_session_path, class: "text-xs hover:text-usuki" %>
             </div>
           </div>
-        <div class="p-4 text-center right-0 left-0 flex justify-center space-x-4 mt-16 lg:hidden ">
+        <div class="p-4 text-center right-0 left-0 flex justify-center space-x-4 mt-10 lg:hidden ">
           <a href="#">
             <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
           </a>
