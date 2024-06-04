@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import PreviewsController from "./previews_controller"
 application.register("previews", PreviewsController)
+
+import SearchModalController from "./search_modal_controller"
+application.register("search-modal", SearchModalController)
