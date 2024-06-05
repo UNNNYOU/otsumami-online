@@ -1,8 +1,13 @@
-<div class="min-h-screen bg-sumi pt-16">
+<div class="min-h-screen bg-sumi pt-16 text-shironeri">
   <div class="flex justify-center">
     <div class="w-10/12 md:w-8/12 h-screen">
-      <div class="text-gohun text-center mb-2">マイページ</div>
-      <div class="h-5/6 overflow-auto hidden-scrollbar" >
+      <div class="text-center my-2">マイページ</div>
+      <ul class="flex my-10 justify-between">
+        <li class="text-usuki">投稿一覧</li>
+        <li>ブックマーク</li>
+        <li><%= link_to "登録情報変更",settings_path%></li>
+      </ul>
+      <div class="h-5/6 overflow-auto hidden-scrollbar text-sumi" >
         <% @user.posts.each do |post| %>
           <div id="post-<%= post.id %>", class="card card-side h-[100px] bg-gohun shadow-xl mt-10 rounded-xl">
             <%if post.images.attached? %>
