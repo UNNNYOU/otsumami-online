@@ -1,0 +1,32 @@
+<div class="min-h-screen bg-sumi pt-16 text-shironeri">
+  <div class="flex justify-center">
+    <div class="w-10/12 md:w-8/12 h-screen">
+      <div class="text-gohun text-center my-2">マイページ</div>
+      <ul class="flex my-10 justify-between">
+        <li><%=link_to "投稿一覧", user_path %></li>
+        <li>ブックマーク</li>
+        <li class="text-usuki">登録情報編集</li>
+      </ul>
+      <div>
+        <div class="mt-10">
+          <%= form_with model: @user do |f| %>
+            <%= f.label :name, "ユーザー名"%>
+            <div class="flex">
+              <%= f.text_field :name, class: "bg-shironeri text-sumi input input-bordered w-10/12 "%>
+              <%= f.submit "送信", class: "btn bg-shironeri hover:bg-usuki text-sumi w-2/12" %>
+            </div>
+          <%end%>
+        </div>
+        <div class="mt-10">
+          <%= form_with model: @user do |f|%>
+            <%= f.label :prefecture_id, "居住している都道府県"%>
+            <div class="flex">
+              <%= f.collection_select :prefecture_id, @prefectures, :id, :name,{include_blank: '都道府県を選択して下さい'}, class:"bg-shironeri text-sumi input input-bordered w-10/12"%>
+              <%= f.submit "送信", class: "btn bg-shironeri hover:bg-usuki text-sumi w-2/12"%>
+            </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
