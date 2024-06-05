@@ -1,18 +1,18 @@
-<div class="flex justify-center min-h-screen ">
+<div class="flex justify-center min-h-screen text-shironeri pt-16">
   <div class="container">
-    <div class="mt-10 text-4xl">
+    <div class="mt-5 ml-5 text-xl">
       <h1><%= @search[:prefecture_name_cont] %>  <%= @search[:title_or_body_cont] %>  検索結果<h1>
     </div>
     <div class="mt-16">
-      <a class="text-3xl">合計　<%= @posts.count %>件</a>
-      <a class="ml-5 text-xl"><%= sort_link(@q, :updated_at, '新着順', default_order: :desc  ) %></a>
-      <a class="ml-3 text-xl"><%= sort_link(@q, :local, '地元民のおすすめ', default_order: :desc ) %></a>
+      <a class="text-lg ml-2">合計 <%= @posts.count %>件</a>
+      <a class="ml-5 text-lg"><%= sort_link(@q, :updated_at, '新着順', default_order: :desc  ) %></a>
+      <a class="ml-3 text-lg"><%= sort_link(@q, :local, '地元民のおすすめ', default_order: :desc ) %></a>
     </div>
     <div class="my-5 mb-20 flex">
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap justify-center">
         <% @posts.each do |post|%>
           <%= link_to post_path(post), data: {turbo: false} do%>
-            <div class="card w-[300px] bg-base-100 shadow-xl mt-10 top-4 mx-2 hover:opacity-50">
+            <div class="card w-[300px] bg-base-100 shadow-xl mt-10 top-4 mx-2 hover:opacity-50 text-sumi overflow-hidden">
               <div class="indicator">
                 <% if post.local %>
                   <span class="indicator-item badge text-lg top-4 right-[85px] bg-usuki text-sumi">地元民のおすすめ</span>
