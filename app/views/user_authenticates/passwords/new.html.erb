@@ -1,18 +1,22 @@
-<h2>Forgot your password?</h2>
+<div class="min-h-screen w-full flex items-center justify-center text-center px-4 md:px-16 px-0 z-0 bg-kuro text-shironeri">
+  <%= image_tag "top-main.png", class: "absolute w-full h-full z-20"%>
+  <div class="absolute bg-kuro opacity-60 inset-0 z-20 lg:hidden"></div>
+  <div class="w-full pt-6 z-20">
+    <h1 class="text-xl">パスワードリセット</h1>
+    <p class="mt-10">登録しているメールアドレスを入力して下さい。</p>
+    <p class="mb-10">入力されたメールアドレスにパスワード再設定のためのリンクを送信します。</p>
+      <div class="class: "sm:w-2/3 w-full px-4 lg:px-0 mx-auto mt-5">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render "user_authenticates/shared/error_messages", resource: resource %>
 
-<div class="text-shironeri">
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-    <%= render "user_authenticates/shared/error_messages", resource: resource %>
+          <div class="field flex justify-center">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full lg:w-1/2 p-4 mt-10 text-lg rounded-sm bg-black border-b", placeholder: "メールアドレス" %>
+          </div>
 
-    <div class="field text-shironeri">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="actions flex justify-center">
+            <%= f.submit "メールを送信", class: "uppercase block w-1/2 lg:w-1/4 p-2 mt-10 text-lg border bg-kuro rounded-sm focus:outline-none hover:text-usuki" %>
+          </div>
+        <% end %>
     </div>
-
-    <div class="actions">
-      <%= f.submit "Send me reset password instructions" %>
-    </div>
-  <% end %>
+  </div>
 </div>
-
-<%= render "user_authenticates/shared/links" %>
