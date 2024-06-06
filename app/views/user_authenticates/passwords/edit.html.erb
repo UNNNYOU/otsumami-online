@@ -1,25 +1,27 @@
-<h2>Change your password</h2>
+<div class="min-h-screen w-full flex items-center justify-center text-center px-4 md:px-16 px-0 z-0 bg-kuro text-shironeri">
+  <%= image_tag "top-main.png", class: "object-cover absolute w-full h-full z-20"%>
+  <div class="absolute bg-kuro opacity-60 inset-0 z-20"></div>
+  <div class="w-full pt-6 z-20">
+    <h1 class="text-xl">パスワード再設定</h1>
+    <p class="mt-10">新しいパスワードを設定して下さい。</p>
+    <p class="mb-10">パスワードは６文字以上で設定して下さい。</p>
+      <div class="class: "sm:w-2/3 w-full px-4 lg:px-0 mx-auto mt-5">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "user_authenticates/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "user_authenticates/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+          <div class="field flex justify-center">
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "block w-full lg:w-1/2 p-4 mt-10 text-lg rounded-sm bg-black border-b", placeholder: "パスワード" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+          <div class="field flex justify-center">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "block w-full lg:w-1/2 p-4 mt-10 text-lg rounded-sm bg-black border-b", placeholder: "パスワード確認用" %>
+          </div>
+
+          <div class="actions flex justify-center">
+            <%= f.submit "パスワード変更", class: "uppercase block w-1/2 lg:w-1/4 p-2 mt-10 text-lg border bg-kuro rounded-sm focus:outline-none hover:text-usuki" %>
+          </div>
+        <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "user_authenticates/shared/links" %>
+</div>
