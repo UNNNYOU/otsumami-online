@@ -1,6 +1,6 @@
 <div class="min-h-screen w-full flex items-center justify-center text-center px-4 md:px-16 px-0 z-0 bg-kuro text-shironeri">
-  <%= image_tag "top-main.png", class: "absolute w-full h-full z-20"%>
-  <div class="absolute bg-kuro opacity-60 inset-0 z-20 lg:hidden"></div>
+  <%= image_tag "top-main.png", class: "object-cover absolute w-full h-full z-20"%>
+  <div class="absolute bg-kuro opacity-60 inset-0 z-20"></div>
   <div class="w-full pt-6 z-20">
     <h1 class="text-xl">パスワードリセット</h1>
     <p class="mt-10">登録しているメールアドレスを入力して下さい。</p>
@@ -17,6 +17,9 @@
             <%= f.submit "メールを送信", class: "uppercase block w-1/2 lg:w-1/4 p-2 mt-10 text-lg border bg-kuro rounded-sm focus:outline-none hover:text-usuki" %>
           </div>
         <% end %>
+        <div class="mt-10">
+          <%= link_to "ログイン画面へ戻る", new_user_authenticate_session_path, class: "text-xs hover:text-usuki" %>
+        </div>
     </div>
   </div>
 </div>

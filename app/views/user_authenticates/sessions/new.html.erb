@@ -51,7 +51,9 @@
                   <%= f.submit "ログイン", class: "uppercase block w-1/2 p-2 text-lg border bg-kuro rounded-sm focus:outline-none hover:text-usuki" %>
                 </div>
             <% end %>
-
+            <div class="mt-6">
+              <%= link_to "パスワードをお忘れの方", new_user_authenticate_password_path, class: "text-xs hover:text-usuki" %>
+            </div>
             <div class="mt-6">
               <%= link_to "新規登録はこちら", new_user_authenticate_registration_path, class: "text-xs hover:text-usuki" %>
             </div>
